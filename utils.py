@@ -15,7 +15,7 @@ yesterday = date.today() - timedelta(days = 1)
     checks if the directory for yesterday exists     
 '''
 def checkYesterdaysDir():
-    day = yesterday.strftime('/%Y/%B/19')
+    day = yesterday.strftime('/%Y/%B/%d')
     date_dir = base_dir + day
     if not os.path.exists(date_dir):
         os.makedirs(date_dir)
@@ -26,7 +26,7 @@ def checkYesterdaysDir():
     checks if the paper is from yesterday
 '''
 def isPaperFromYesterday(paper_date):
-    day = yesterday.strftime('%Y-%m-19')
+    day = yesterday.strftime('%Y-%m-%d')
     if day in paper_date:
         return True
     return False
