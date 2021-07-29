@@ -9,7 +9,12 @@ import threading
 
 config = json.load(open('./config.json', 'r'))
 base_dir = config['directory']
+
+
 yesterday = date.today() - timedelta(days = 1)
+weekend_check = yesterday.weekday() - 4
+if weekend_check > 0:
+    yesterday = yesterday - timedelta(days = weekend_check)
 
 '''
     checks if the directory for yesterday exists     
@@ -55,11 +60,11 @@ def startLoadingBar():
     return root
 '''
 
-def activateFinished():
+def activateFinished(date_directory):
     root = Tk()
+    root.wm_attributes("-topmost", 1)
     root.title('arXiv Papers')
-    root.geometry('300x50')
-    l = Label(root, text = "Finished fetching papers")
-    l.config(font =("Courier", 14))
-    l.pack()
+    l = Label(root, text = f"Finished downloading papers to\n{date_directory}")
+    l.config(font=("Courier", 12), justify='center')
+    l.pack(expand=True, fill=BOTH)
     root.mainloop()
