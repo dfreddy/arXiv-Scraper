@@ -18,3 +18,7 @@ Scrapes arXiv for yesterday's papers from selected lists
 - directory
 	- path to the base folder where the papers will be stored
 	- does not need to end in "arXiv Papers"
+
+## Tech Stack
+
+Python, Web Scraping
